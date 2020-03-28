@@ -3,7 +3,7 @@ let SCRABBLE_TILE_SCORES = {
   g: 2, h: 4, i: 1, j: 8, k: 5,  l: 1,
   m: 3, n: 1, o: 1, p: 3, q: 10, r: 1,
   s: 1, t: 1, u: 1, v: 4, w: 4,  x: 8,
-  y: 4, z: 10,
+  y: 4, z: 10, 
 };
 
 /**
@@ -25,14 +25,20 @@ let SCRABBLE_TILE_SCORES = {
 
 function scrabbleScore(word) {
   // This is your job. :)
+  let lowCaseWord = word.toLowerCase();
+  let score = 0;
+  for (let letter of lowCaseWord) {
+    score = score + SCRABBLE_TILE_SCORES[letter]
+  }
+  return score
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for scrabbleScore:');
-
   console.log(scrabbleScore('aaa') === 3);
   console.log(scrabbleScore('aaa') === scrabbleScore('AaA'));
-
+  console.log(scrabbleScore('cup') === 7);
+  console.log(scrabbleScore('drink') === 10);
   // Add your own sanity checks here.
   // How else will you be sure your code does what you think it does?
 }
